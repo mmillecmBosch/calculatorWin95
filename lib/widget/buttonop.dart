@@ -36,7 +36,7 @@ class ButtonOp extends StatelessWidget {
           Op,
           style: GoogleFonts.orbitron(
             textStyle: TextStyle(
-              color: Color.fromRGBO(128, 0, 0, 1),
+              color: Color.fromRGBO(251, 13, 13, 1),
               fontSize: 18,
             ),
           ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Outhers extends StatelessWidget {
-  final String Op;
-  Outhers(this.Op);
+class Others extends StatelessWidget {
+  final String op;
+  Others(this.op);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class Outhers extends StatelessWidget {
         ),
         onPressed: () {},
         child: Text(
-          Op,
+          op,
           style: GoogleFonts.orbitron(
             textStyle: TextStyle(
               color: Color.fromRGBO(0, 0, 128, 1),
