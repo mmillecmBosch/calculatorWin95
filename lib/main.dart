@@ -26,7 +26,32 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHome extends StatelessWidget {
+class MyHome extends StatefulWidget {
+  @override
+  _MyHomeState createState() => _MyHomeState();
+}
+
+class _MyHomeState extends State<MyHome> {
+  final value = [];
+
+  void _screenCalculator(String text) {
+    setState(() {
+      value.add(text);
+    });
+  }
+
+  void _back() {
+    setState(() {
+      value.removeLast();
+    });
+  }
+
+  void _clearAll() {
+    setState(() {
+      value.clear();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,18 +152,38 @@ class MyHome extends StatelessWidget {
               alignment: Alignment.bottomRight,
               color: Colors.white,
               padding: EdgeInsets.all(8),
-              child: Text(
-                '0',
-                style: TextStyle(fontSize: 40),
+              child: Text.rich(
+                TextSpan(
+                  text: '',
+                  children: value.map<InlineSpan>(
+                    (number) {
+                      return TextSpan(
+                        text: number,
+                        style: GoogleFonts.orbitron(
+                          fontSize: 20,
+                        ),
+                      );
+                    },
+                  ).toList(),
+                ),
               ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Space1(),
-                Button('Back'),
-                Button('CE'),
-                Button('C'),
+                Button(
+                  'Back',
+                  _back,
+                ),
+                Button(
+                  'CE',
+                  _clearAll,
+                ),
+                Button(
+                  'C',
+                  _clearAll,
+                ),
               ],
             ),
             SizedBox(
@@ -164,24 +209,24 @@ class MyHome extends StatelessWidget {
                   mainAxisSpacing: 20,
                   crossAxisSpacing: 4,
                   children: [
-                    ButtonNumber('7'),
-                    ButtonNumber('8'),
-                    ButtonNumber('9'),
+                    ButtonNumber('7', _screenCalculator),
+                    ButtonNumber('8', _screenCalculator),
+                    ButtonNumber('9', _screenCalculator),
                     ButtonOp('/'),
                     Others('sqrt'),
-                    ButtonNumber('4'),
-                    ButtonNumber('5'),
-                    ButtonNumber('6'),
+                    ButtonNumber('4', _screenCalculator),
+                    ButtonNumber('5', _screenCalculator),
+                    ButtonNumber('6', _screenCalculator),
                     ButtonOp('*'),
                     Others('%'),
-                    ButtonNumber('1'),
-                    ButtonNumber('2'),
-                    ButtonNumber('3'),
+                    ButtonNumber('1', _screenCalculator),
+                    ButtonNumber('2', _screenCalculator),
+                    ButtonNumber('3', _screenCalculator),
                     ButtonOp('-'),
                     Others('1/x'),
-                    ButtonNumber('0'),
-                    ButtonNumber('+/-'),
-                    ButtonNumber('.'),
+                    ButtonNumber('0', _screenCalculator),
+                    ButtonNumber('+/-', _screenCalculator),
+                    ButtonNumber('.', _screenCalculator),
                     ButtonOp('+'),
                     ButtonOp('='),
                   ],

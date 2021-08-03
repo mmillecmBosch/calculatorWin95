@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ButtonSmall extends StatelessWidget {
-  final String Op;
+  final String op;
 
-  ButtonSmall(this.Op);
+  ButtonSmall(this.op);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,7 +33,7 @@ class ButtonSmall extends StatelessWidget {
         ),
         onPressed: () {},
         child: Text(
-          Op,
+          op,
           style: GoogleFonts.orbitron(
             textStyle: TextStyle(
               color: Color.fromRGBO(251, 13, 13, 1),

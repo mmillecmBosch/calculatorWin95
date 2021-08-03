@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ButtonNumber extends StatelessWidget {
-  final String Number;
+  final String number;
+  final Function click;
 
-  ButtonNumber(this.Number);
+  ButtonNumber(this.number, this.click);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,9 +32,9 @@ class ButtonNumber extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           primary: Color.fromRGBO(192, 192, 192, 1),
         ),
-        onPressed: () {},
+        onPressed: () => click(number),
         child: Text(
-          Number,
+          number,
           style: GoogleFonts.orbitron(
             textStyle: TextStyle(
               color: Color.fromRGBO(44, 44, 240, 1),

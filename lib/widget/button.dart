@@ -3,7 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 class Button extends StatelessWidget {
   final String text;
-  Button(this.text);
+  final Function click;
+  Button(this.text, this.click);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class Button extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           primary: Color.fromRGBO(192, 192, 192, 1),
         ),
-        onPressed: () {},
+        onPressed: () => click(),
         child: Text(
           text,
           style: GoogleFonts.orbitron(
